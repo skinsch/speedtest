@@ -1,3 +1,5 @@
+![HTML5 Speedtest Logo](https://github.com/adolfintel/speedtest/blob/master/.logo/Readme-Logo.png?raw=true)
+
 # HTML5 Speedtest
 
 No Flash, No Java, No Websocket, No Bullshit.
@@ -17,6 +19,10 @@ Only modern browsers are supported (IE11, latest Edge, latest Chrome, latest Fir
 * Jitter
 * IP Address
 * Telemetry (optional)
+* Results sharing (optional)
+
+![Screenshot](https://speedtest.fdossena.com/screenshot.png)
+
 
 ## Requirements
  - A reasonably fast web server with PHP (see doc.md for details and use without PHP)
@@ -56,6 +62,8 @@ $ docker build -t adolfintel/speedtest:latest .
 $ docker run -d --name  speedtest -p 0.0.0.0:80:80 adolfintel/speedtest:latest
 ```
 
+## Multiple test servers
+Please see the ```mpot``` branch
 
 ## Node.js backend
 A Node.js implementation is available in the ```node``` branch, maintained by [dunklesToast](https://github.com/dunklesToast).
@@ -66,7 +74,7 @@ A Node.js implementation is available in the ```node``` branch, maintained by [d
 Send ETH at this address: ```0x8A5273d4e2618c4cff2C62d8EB731701FceEd8E3```
 
 ## License
-Copyright (C) 2016-2018 Federico Dossena
+Copyright (C) 2016-2019 Federico Dossena
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU Lesser General Public License as published by

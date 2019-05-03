@@ -94,7 +94,7 @@
 	}
 	@media all and (max-width:65em){
 		body{
-			font-size:1.5vw;
+			font-size:2vw;
 		}
 	}
 	@media all and (max-width:40em){
@@ -122,7 +122,7 @@ function startStop(){
 	}else{
 		//test is not running, begin
 		w=new Worker('speedtest_worker.min.js');
-		w.postMessage('start'); //Add optional parameters as a JSON object to this command
+		w.postMessage('start {"test_order":"D_U"}'); //run only download and upload tests, with a 1s pause in between
 		I("startStopBtn").className="running";
 		w.onmessage=function(e){
 			var data=JSON.parse(e.data);
@@ -132,11 +132,8 @@ function startStop(){
 				I("startStopBtn").className="";
 				w=null;
 			}
-			I("ip").textContent=data.clientIp;
 			I("dlText").textContent=(status==1&&data.dlStatus==0)?"...":data.dlStatus;
 			I("ulText").textContent=(status==3&&data.ulStatus==0)?"...":data.ulStatus;
-			I("pingText").textContent=data.pingStatus;
-			I("jitText").textContent=data.jitterStatus;
 		};
 	}
 }
@@ -148,15 +145,12 @@ setInterval(function(){
 function initUI(){
 	I("dlText").textContent="";
 	I("ulText").textContent="";
-	I("pingText").textContent="";
-	I("jitText").textContent="";
-	I("ip").textContent="";
 }
 
 </script>
 </head>
 <body>
-<h1>HTML5 Speedtest</h1>
+<h1>HTML5 Speedtest - Custom settings example</h1>
 <div id="startStopBtn" onclick="startStop()"></div>
 <div id="test">
 	<div class="testGroup">
@@ -170,21 +164,6 @@ function initUI(){
 			<div id="ulText" class="meterText"></div>
 			<div class="unit">Mbps</div>
 		</div>
-	</div>
-	<div class="testGroup">
-		<div class="testArea">
-			<div class="testName">Ping</div>
-			<div id="pingText" class="meterText"></div>
-			<div class="unit">ms</div>
-		</div>
-		<div class="testArea">
-			<div class="testName">Jitter</div>
-			<div id="jitText" class="meterText"></div>
-			<div class="unit">ms</div>
-		</div>
-	</div>
-	<div id="ipArea">
-		IP Address: <span id="ip"></span>
 	</div>
 </div>
 <a href="https://github.com/adolfintel/speedtest">Source code</a>

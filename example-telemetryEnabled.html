@@ -122,11 +122,11 @@ function startStop(){
 	}else{
 		//test is not running, begin
 		w=new Worker('speedtest_worker.min.js');
-		w.postMessage('start'); //Add optional parameters as a JSON object to this command
+		w.postMessage('start {"telemetry_level":"basic"}'); //Add optional parameters (see doc.md)
 		I("startStopBtn").className="running";
 		w.onmessage=function(e){
 			var data=JSON.parse(e.data);
-			var status=data.testState;
+			var status=data.testState
 			if(status>=4){
 				//test completed
 				I("startStopBtn").className="";
@@ -156,7 +156,7 @@ function initUI(){
 </script>
 </head>
 <body>
-<h1>HTML5 Speedtest</h1>
+<h1>HTML5 Speedtest - Telemetry example</h1>
 <div id="startStopBtn" onclick="startStop()"></div>
 <div id="test">
 	<div class="testGroup">
@@ -187,6 +187,7 @@ function initUI(){
 		IP Address: <span id="ip"></span>
 	</div>
 </div>
+<div>Basic telemetry is active; results will be saved in your database, without the full log. If the results don't appear, check the settings in telemetry_settings.php</div>
 <a href="https://github.com/adolfintel/speedtest">Source code</a>
 <script type="text/javascript">initUI();</script>
 </body>

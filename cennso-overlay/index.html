@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, user-scalable=no" />
-<title>HTML5 Speedtest</title>
+<title>CENNSO Speedtest</title>
 <style type="text/css">
 	html,body{
 		border:none; padding:0; margin:0;
@@ -92,6 +92,17 @@
 	div.testGroup{
 		display:inline-block;
 	}
+	#testFiles a { 
+		display: inline-block;
+		padding: 1em 0.5em;
+		margin: 1em;
+		border:0.15em solid #6060FF;
+		border-radius: 0.3em;
+		text-decoration: none;
+	}
+	#testFiles a:hover{
+		box-shadow: 0 0 2em rgba(0,0,0,0.1), inset 0 0 1em rgba(0,0,0,0.1);
+	}
 	@media all and (max-width:65em){
 		body{
 			font-size:1.5vw;
@@ -156,7 +167,7 @@ function initUI(){
 </script>
 </head>
 <body>
-<h1>HTML5 Speedtest</h1>
+<h1>CENNSO Speedtest</h1>
 <div id="startStopBtn" onclick="startStop()"></div>
 <div id="test">
 	<div class="testGroup">
@@ -187,7 +198,19 @@ function initUI(){
 		IP Address: <span id="ip"></span>
 	</div>
 </div>
-<a href="https://github.com/adolfintel/speedtest">Source code</a>
+
+<h2>Testfiles</h2>
+<div id="testFiles" class="testGroup">
+	<a href="garbage.php?ckSize=1"> 1M </a>
+	<a href="garbage.php?ckSize=10"> 10M </a>
+	<a href="garbage.php?ckSize=100"> 100M </a>
+	<a href="garbage.php?ckSize=1000"> 1000M </a>
+	<a href="garbage.php?ckSize=2000"> 2000M </a>
+</div>
+
+<div>
+	<a href="https://github.com/travelping/speedtest">Source code</a>
+</div>
 <script type="text/javascript">initUI();</script>
 </body>
 </html>
